@@ -6,7 +6,10 @@
 <head>
 <meta name="viewport" content="width=device-width" />
 <title><c:out value="${pageTitle}" /></title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
 <c:url value="/css/site.css" var="cssUrl" />
 <link rel="stylesheet" href="${cssUrl}" />
 </head>
@@ -16,22 +19,21 @@
 			<c:url value="/img/logo.png" var="imageUrl" />
 			<img src="${imageUrl}" alt="National Park Geek logo" />
 		</div>
+		
 	</header>
-	<nav>
-		<ul>
-			<c:url var="homePageUrl" value="/" />
-			<li><a href="${homePageUrl}">Home</a></li>
-			<c:url var="surveyPageUrl" value="/survey" />
-			<li><a href="${surveyPageUrl}">Survey</a></li>
+	
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    	<c:url var="homePageUrl" value="/" />
+      <a class="nav-item nav-link active" href="${homePageUrl}">Home <span class="sr-only">(current)</span></a>
+      <c:url var="surveyPageUrl" value="/survey" />
+      <a class="nav-item nav-link" href="${surveyPageUrl}">Survey</a>
+    </div>
+  </div>
+</nav>
 
-			<!--
-			This is code we'll want within logic as hyperlinks from our jsps
-			
-			<c:url var="detailUrl" value="/productDetail">
-				<c:param name="productId" value="${product.productId}"/>
-			</c:url>
-			-->
-		</ul>
-
-	</nav>
 	<section id="main-content">

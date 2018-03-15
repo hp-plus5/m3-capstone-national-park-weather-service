@@ -16,7 +16,7 @@
 
 .parkImage {
 	display: inline-block;
-	width: 70%;
+	width: 50%;
 }
 
 .parkImage img {
@@ -26,8 +26,9 @@
 .parkText {
 	text-align: left;
 	width: 40%;
-	vertical-align: top;
+	vertical-align: middle;
 	display: inline-block;
+	padding-left:40px;
 }
 
 .parkName {

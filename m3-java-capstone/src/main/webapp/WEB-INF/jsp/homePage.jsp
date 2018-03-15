@@ -20,7 +20,8 @@
 			<div class="parkName">
 				<c:out value="${park.name}" />
 			</div>
-
+			<br>
+			<br>
 			<div class="parkDescription">
 				<c:out value="${park.description}" />
 			</div>
