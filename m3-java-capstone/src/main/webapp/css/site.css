@@ -1,0 +1,41 @@
+#logo {
+	width: 50%;
+}
+
+#logo img{
+	width: 100%;
+	height: 100%;
+}
+
+.allParkInfo {
+	margin: 50px;
+	width: 90%;
+	text-align: left;
+	line-height: 1.7;
+}
+
+.parkImage {
+	display: inline-block;
+	width: 70%;
+}
+
+.parkImage img {
+	width: 100%;
+}
+
+.parkText {
+	text-align: left;
+	width: 40%;
+	vertical-align: top;
+	display: inline-block;
+}
+
+.parkName {
+	font-size: 1.5em;
+	display: inline;
+	float: left;
+}
+
+.parkDescription {
+	font-size: 1.2em;
+}
