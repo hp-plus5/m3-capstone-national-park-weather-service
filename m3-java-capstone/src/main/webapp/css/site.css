@@ -43,9 +43,37 @@
 
 /**** Weather Forecast Day 1 ****/
 .firstDay {
-	
+	text-align: center;
+	width:25%;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.firstDay h3 {
+	margin: 20px 0px 0px 0px;
+}
+
+.firstDayImage img{
+	width: 100%;
+}
+
+.firstDayImage {
+	width: 100%;
 }
 /**** Weather Forecast Day 2-5 ****/
 .fourDays {
-	
+	text-align: center;
+	width:15%;
+	display: inline-block;
+	vertical-align:middle;
 }
+
+.fourDaysImage img {
+	width: 100%;
+}
+
+.fourDaysImage {
+	width: 100%;
+}
+
+

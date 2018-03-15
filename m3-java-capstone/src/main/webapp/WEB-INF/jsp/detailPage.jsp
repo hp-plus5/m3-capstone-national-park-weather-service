@@ -11,7 +11,7 @@
 	<!-- listToyImg -->
 
 	<div>
-		<c:out value="${park.name}" />
+		<h2><c:out value="${park.name}" /></h2>
 	</div>
 
 	<div>
@@ -113,38 +113,33 @@
 		<c:choose>
 			<c:when test="${day.fiveDayForecastValue == 1}">
 				<div class="firstDay">
-					<div>
+					<h3>Today</h3>
+					<div class="firstDayImage">
 						<c:url value="/img/weather/${day.forecast}.png" var="imageUrl" />
 						<img src="${imageUrl}" />
 					</div>
 
 					<div>
-						<c:out value="${day.low}" />
-					</div>
-
-					<div>
-						<c:out value="${day.high}" />
+						<c:out value="Low: ${day.high}" /> <c:out value="High: ${day.low}" />
 					</div>
 				</div>
 			</c:when>
 			<c:otherwise>
 				<div class="fourDays">
-					<div>
+					<div class="fourDaysImage">
 						<c:url value="/img/weather/${day.forecast}.png" var="imageUrl" />
 						<img src="${imageUrl}" />
 					</div>
 
 					<div>
-						<c:out value="${day.low}" />
+						<c:out value="High: ${day.high}" />
 					</div>
 
 					<div>
-						<c:out value="${day.high}" />
+						<c:out value="Low: ${day.low}" />
 					</div>
 				</div>
 			</c:otherwise>
-
-
 		</c:choose>
 	</c:forEach>
 
