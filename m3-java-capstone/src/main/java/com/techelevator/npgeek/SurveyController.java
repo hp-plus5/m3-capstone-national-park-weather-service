@@ -3,9 +3,9 @@ package com.techelevator.npgeek;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.techelevator.npgeek.model.Survey;
 import com.techelevator.npgeek.model.SurveyDAO;
@@ -22,14 +22,7 @@ public class SurveyController {
 	}
 	
 	@RequestMapping(path="/submitSurvey", method=RequestMethod.POST)
-	public String saveSurveyResults(@RequestParam String surveyParkCode, @RequestParam String emailAddress, @RequestParam String state, @RequestParam String activityLevel) {
-		Survey survey = new Survey();
-		
-		survey.setSurveyParkCode(surveyParkCode); 
-		survey.setEmailAddress(emailAddress);
-		survey.setState(state);
-		survey.setActivityLevel(activityLevel);
-		
+	public String saveSurveyResults(@ModelAttribute("survey") Survey survey) {		
 		surveyDao.save(survey);
 		return "redirect:/surveyResults";
 	}

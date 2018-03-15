@@ -21,12 +21,11 @@ public class JDBCWeatherDAO implements WeatherDAO {
 		Weather[] weather = new Weather[5];
 		String weatherByCodeSql = "SELECT * FROM weather WHERE parkCode = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(weatherByCodeSql, weatherParkCode.toUpperCase());
-		while (results.next()) {
 			
 			for(int i = 0; i < weather.length; i++) {
+				results.next();
 				weather[i] = mapRowToWeather(results);
 			}
-		}
 		return weather;
 	}
 
@@ -36,7 +35,12 @@ public class JDBCWeatherDAO implements WeatherDAO {
 		weather.setFiveDayForecastValue(results.getInt("fiveDayForecastValue"));
 		weather.setLow(results.getInt("low"));
 		weather.setHigh(results.getInt("high"));
-		weather.setForecast(results.getString("forecast"));
+		if(results.getString("forecast").equals("partly cloudy")) {
+			weather.setForecast("partlyCloudy");
+		} else {
+			weather.setForecast(results.getString("forecast"));
+		}
+		
 		return weather;
 	}
 }

@@ -18,9 +18,9 @@
 	<!-- Drop Down Menu: Favorite Park -->
 	
 	<select name="parkList" form="survey">
-		<forEach var="parks" items="${parks}">
+		<c:forEach var="parks" items="${parks}">
 		<option value="${park.code}"><c:out value="${park.name}"/></option>
-		</forEach>
+		</c:forEach>
 	</select>
 
 	<div class="form-group"><!-- form-group is bootstrap -->
