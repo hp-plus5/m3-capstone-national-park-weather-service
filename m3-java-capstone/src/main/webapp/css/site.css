@@ -7,6 +7,8 @@
 	height: 100%;
 }
 
+/* HOME PAGE TAGS **************************/
+
 .allParkInfo {
 	margin: 50px;
 	width: 90%;
@@ -14,16 +16,17 @@
 	line-height: 1.7;
 }
 
-.parkImage {
+.allParkImages {
 	display: inline-block;
 	width: 50%;
+	
 }
 
-.parkImage img {
+.allParkImages img {
 	width: 100%;
 }
 
-.parkText {
+.allParkTexts {
 	text-align: left;
 	width: 40%;
 	vertical-align: middle;
@@ -31,13 +34,13 @@
 	padding-left:40px;
 }
 
-.parkName {
+.allParkNames {
 	font-size: 1.5em;
 	display: inline;
 	float: left;
 }
 
-.parkDescription {
+.allParkDescriptions {
 	font-size: 1.2em;
 }
 
@@ -76,4 +79,26 @@
 	width: 100%;
 }
 
+/* DETAIL PAGE TAGS **************************/
+#detailLargestDiv {
+	
+}
 
+.detailImage {
+	
+}
+.detailImage img{
+	width: 100%;
+}
+
+.detailText {
+	
+}
+
+.detailName {
+	
+}
+
+.detailDescription {
+	
+}

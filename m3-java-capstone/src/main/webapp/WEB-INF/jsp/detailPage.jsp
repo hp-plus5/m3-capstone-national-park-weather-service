@@ -3,21 +3,19 @@
 <%@ include file="common/header.jspf"%>
 
 
-<div class="listBigDiv">
-	<div id="listToyImg">
+<div class="#detailLargestDiv">
+	<div id="detailImage">
 		<c:url value="/img/parks/${param.code}.jpg" var="imageUrl" />
 		<img src="${imageUrl}" alt="${param.name}" />
 	</div>
-	<!-- listToyImg -->
-
-	<div>
+<div class="detailText">
+	<div class="detailName">
 		<h2><c:out value="${park.name}" /></h2>
 	</div>
-
-	<div>
+	<div class="detailDescription">
 		<c:out value="${park.description}" />
 	</div>
-
+</div>
 
 
 
@@ -45,43 +43,43 @@
 				<div class="card-body">
 
 					<div>
-						<c:out value="${park.state}" />
+						<c:out value="State: ${park.state}" />
 					</div>
 
 					<div>
-						<c:out value="${park.acreage} acres" />
+						<c:out value="Acreage: ${park.acreage} acres" />
 					</div>
 
 					<div>
-						<c:out value="${park.elevationInFeet} feet" />
+						<c:out value="Elevation: ${park.elevationInFeet} feet" />
 					</div>
 
 					<div>
-						<c:out value="${park.milesOfTrail} miles of trail" />
+						<c:out value="Miles of Trail: ${park.milesOfTrail}" />
 					</div>
 
 					<div>
-						<c:out value="${park.numberOfCampsites} campsites" />
+						<c:out value="Number of Campsites: ${park.numberOfCampsites}" />
 					</div>
 
 					<div>
-						<c:out value="${park.climate}" />
+						<c:out value="Climate: ${park.climate}" />
 					</div>
 
 					<div>
-						<c:out value="${park.yearFounded}" />
+						<c:out value="Year Founded: ${park.yearFounded}" />
 					</div>
 
 					<div>
-						<c:out value="${park.annualVisitorCount} visitors per year" />
+						<c:out value="Visitors per Year: ${park.annualVisitorCount}" />
 					</div>
 					<div>
-						<c:out value="$${park.entryFee} entry fee" />
+						<c:out value="Entry Fee: $${park.entryFee}" />
 					</div>
 
 					<div>
 						<c:out
-							value="${park.numberOfAnimalSpecies} animal species found in the park" />
+							value="Animal species found in the park: ${park.numberOfAnimalSpecies}" />
 					</div>
 
 
@@ -120,7 +118,7 @@
 					</div>
 
 					<div>
-						<c:out value="Low: ${day.high}" /> <c:out value="High: ${day.low}" />
+						<c:out value="Low: ${day.high}" /> &#x2109; <c:out value="High: ${day.low}" /> &#x2109;
 					</div>
 				</div>
 			</c:when>
@@ -132,11 +130,13 @@
 					</div>
 
 					<div>
-						<c:out value="High: ${day.high}" />
+						<c:out value="High: ${day.high}" /> &#x2109;
+						<!-- Celsius = &#x2103; -->
+						
 					</div>
 
 					<div>
-						<c:out value="Low: ${day.low}" />
+						<c:out value="Low: ${day.low}" /> &#x2109;
 					</div>
 				</div>
 			</c:otherwise>

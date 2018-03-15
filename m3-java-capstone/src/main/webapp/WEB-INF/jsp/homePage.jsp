@@ -6,7 +6,7 @@
 
 	<div class="allParkInfo">
 	
-		<div class="parkImage">
+		<div class="allParkImages">
 			<c:url value="/details" var="detailPageUrl">
 				<c:param name="code" value ="${park.code}"/>
 			</c:url>
@@ -16,13 +16,13 @@
 			</a>	
 		</div> <!-- parkImage -->
 
-		<div class="parkText">
-			<div class="parkName">
+		<div class="allParkTexts">
+			<div class="allParkNames">
 				<c:out value="${park.name}" />
 			</div>
 			<br>
 			<br>
-			<div class="parkDescription">
+			<div class="allParkDescriptions">
 				<c:out value="${park.description}" />
 			</div>
 			
