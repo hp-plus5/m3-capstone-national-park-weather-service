@@ -1,5 +1,7 @@
 package com.techelevator.npgeek;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,6 +38,20 @@ public class HomeController {
 		
 		modelHolder.put("weather", weather);		
 		modelHolder.put("park", park);
+		return "detailPage";
+	}
+	
+	@RequestMapping(path="/details", method=RequestMethod.POST)
+	public String convertTempature(@RequestParam String code, @RequestParam Boolean tempType, HttpSession session) {
+		Boolean isFahrenheit = true;
+		if(tempType == true) {
+			isFahrenheit = true;
+		} else {
+			isFahrenheit = false;
+		}
+		
+		session.setAttribute("isFahrenheit", isFahrenheit);
+		
 		return "detailPage";
 	}
 }

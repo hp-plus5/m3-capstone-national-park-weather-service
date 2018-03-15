@@ -12,22 +12,22 @@
 
 <h2>Survey</h2>
 
-<c:url var="surveyUrl" value="/survey" />
+<c:url var="surveyUrl" value="/submitSurvey" />
 <form:form action="${surveyUrl}" method="POST" modelAttribute="survey"
 	id="survey">
 
-	<select name="parkList" form="survey">
-		<c:forEach var="parks" items="${parks}">
-			<option value="${park.code}"><c:out value="${park.name}" /></option>
+	<form:select path="surveyParkCode" name="surveyParkCode" form="survey">
+		<c:forEach var="parkList" items="${parks}">
+			<form:option value="${parkList.code}"><c:out value="${parkList.name}" /></form:option>
 		</c:forEach>
-	</select>
+	</form:select>
 
 	<div class="form-group">
 		<!-- form-group is bootstrap -->
-		<label for="email">Email Address: </label>
-		<form:input path="email" class="form-control" />
+		<label for="emailAddress">Email Address: </label>
+		<form:input path="emailAddress" class="form-control" />
 		<!-- form-control is bootstrap -->
-		<form:errors path="email" cssClass="error" />
+		<form:errors path="emailAddress" cssClass="error" />
 		<!-- This is formatting our error report/printout -->
 	</div>
 
@@ -85,13 +85,26 @@
 			<option value="WI">Wisconsin</option>
 			<option value="WY">Wyoming</option>
 		</select>
-
-		<div class="form-group">
-			<label for="activityLevel">Activity Level: </label>
-			<form:input path="activityLevel" class="form-control" />
-			<form:errors path="activityLevel" cssClass="error" />
-		</div>
-
+		
+		 <p>Please select your activity level:</p>
+		  <div>
+		    <input type="radio" id="activityChoice1"
+		     name="activityLevel" value="inactive">
+		    <label for="activityChoice1">Inactive</label>
+		
+		    <input type="radio" id="activityChoice2"
+		     name="activityLevel" value="sedentary">
+		    <label for="activityChoice2">Sedentary</label>
+		
+		    <input type="radio" id="activityChoice3"
+		     name="activityLevel" value="active">
+		    <label for="activityChoice3">Active</label>
+		    
+		    <input type="radio" id="activityChoice4"
+		     name="activityLevel" value="extremely active">
+		    <label for="activityChoice4">Extremely Active</label>
+		  </div>		
+		
 		<input type="submit" value="Submit Survey" class="btn btn-default" />
 </form:form>
 

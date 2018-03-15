@@ -26,8 +26,6 @@ public class Survey {
 	private String activityLevel;
 	
 	
-	
-	
 	public Long getSurveyId() {
 		return surveyId;
 	}

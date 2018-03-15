@@ -3,21 +3,21 @@
 <%@ include file="common/header.jspf"%>
 
 
-<div class="#detailLargestDiv">
-	<div id="detailImage">
+<div id="detailLargestDiv">
+	<div class="detailImage">
 		<c:url value="/img/parks/${param.code}.jpg" var="imageUrl" />
 		<img src="${imageUrl}" alt="${param.name}" />
 	</div>
-<div class="detailText">
-	<div class="detailName">
-		<h2><c:out value="${park.name}" /></h2>
+	<div class="detailText">
+		<div class="detailName">
+			<h2>
+				<c:out value="${park.name}" />
+			</h2>
+		</div>
+		<div class="detailDescription">
+			<c:out value="${park.description}" />
+		</div>
 	</div>
-	<div class="detailDescription">
-		<c:out value="${park.description}" />
-	</div>
-</div>
-
-
 
 	<div id="accordion">
 		<div class="card">
@@ -94,11 +94,11 @@
 
 
 	<div>
-		<c:out value="${param.inspirationalQuote}" />
+		<c:out value='"${park.inspirationalQuote}"' />
 	</div>
 
 	<div>
-		<c:out value="${param.inspirationalQuoteSource}" />
+		<c:out value="- ${park.inspirationalQuoteSource}" />
 	</div>
 
 </div>
@@ -106,20 +106,46 @@
 
 
 <div id="weather">
-
 	<c:forEach var="day" items="${weather}">
 		<c:choose>
 			<c:when test="${day.fiveDayForecastValue == 1}">
 				<div class="firstDay">
+					<c:url var="detailsUrl" value="/details"/>
+					<form action="${detailsUrl}" method="POST">
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-secondary active"> <input
+								type="radio" name="tempType" id="isFahrenheit" value="true"
+								autocomplete="off" checked> Fahrenheit
+							</label> <label class="btn btn-secondary"> <input type="radio"
+								name="tempType" id="isCelsius" value="false" autocomplete="off">
+								Celsius
+							</label>
+						</div>
+					
 					<h3>Today</h3>
 					<div class="firstDayImage">
 						<c:url value="/img/weather/${day.forecast}.png" var="imageUrl" />
 						<img src="${imageUrl}" />
 					</div>
-
-					<div>
-						<c:out value="Low: ${day.high}" /> &#x2109; <c:out value="High: ${day.low}" /> &#x2109;
-					</div>
+					<!-- Check isFahrenheit (set in the HomeController) if true, Fahrenheit-->
+					<c:if test="${isFahrenheit == true || isFahrenheit == null}">
+						<div>
+							<c:out value="High: ${day.high}" />
+							&#x2109;
+							<c:out value="Low: ${day.low}" />
+							&#x2109;
+						</div>
+					</c:if>
+					<!-- If false, convert to Celsius -->
+					<c:if test="${isFahrenheit == false}">
+						<div>
+							<c:out value="High: ${(day.high - 32)*(5/9)}" />
+							&#x2103;
+							<c:out value="Low: ${(day.low - 32)*(5/9)}" />
+							&#x2103;
+						</div>
+					</c:if>
+					</form>
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -130,13 +156,15 @@
 					</div>
 
 					<div>
-						<c:out value="High: ${day.high}" /> &#x2109;
+						<c:out value="High: ${day.high}" />
+						&#x2109;
 						<!-- Celsius = &#x2103; -->
-						
+
 					</div>
 
 					<div>
-						<c:out value="Low: ${day.low}" /> &#x2109;
+						<c:out value="Low: ${day.low}" />
+						&#x2109;
 					</div>
 				</div>
 			</c:otherwise>
