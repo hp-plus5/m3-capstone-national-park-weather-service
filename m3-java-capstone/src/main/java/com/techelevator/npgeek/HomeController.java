@@ -42,16 +42,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping(path="/details", method=RequestMethod.POST)
-	public String convertTempature(@RequestParam String code, @RequestParam Boolean tempType, HttpSession session) {
+	public String convertTempature(ModelMap modelHolder, @RequestParam String code, @RequestParam Boolean tempType, HttpSession session) {
 		Boolean isFahrenheit = true;
 		if(tempType == true) {
 			isFahrenheit = true;
 		} else {
 			isFahrenheit = false;
 		}
-		
+		modelHolder.put("code", code);
 		session.setAttribute("isFahrenheit", isFahrenheit);
 		
-		return "detailPage";
+		return "redirect:/details";
 	}
 }

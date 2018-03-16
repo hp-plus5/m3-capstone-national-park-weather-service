@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="pageTitle" value="National Park Geek" />
 <%@ include file="common/header.jspf"%>
 
@@ -113,14 +114,17 @@
 					<c:url var="detailsUrl" value="/details"/>
 					<form action="${detailsUrl}" method="POST">
 						<div id="tempConverter" class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label for="fahrenheit" class="btn btn-secondary active"> 
-							<input type="radio" name="isFahrenheit" id="fahrenheit" value="true" autocomplete="on" checked > 				
+							<label for="fahrenheit" class="btn btn-secondary active">
+							<input type="radio" name="tempType" id="fahrenheit" value="true" autocomplete="on" checked > 				
 								Fahrenheit
 							</label> 
 							<label for="celsius" class="btn btn-secondary"> 
-							<input type="radio" name="isFahrenheit" id="celsius" value="false"autocomplete="off" > 
+							<input type="radio" name="tempType" id="celsius" value="false" autocomplete="off" > 
 								Celsius
 							</label>
+							<input type="hidden" name="code" value="${day.weatherParkCode}">
+						</div>
+						<div>
 							<input type="submit" value="Submit"/>
 						</div>
 					</form>
@@ -141,9 +145,11 @@
 					<!-- If false, convert to Celsius -->
 					<c:if test="${isFahrenheit == false}">
 						<div>
-							<c:out value="High: ${(day.high - 32)*(5/9)}" />
+							<fmt:formatNumber value="${(day.high - 32) * (5/9)}" maxFractionDigits="0" var="temp" />
+							<c:out value="High: ${temp}"/>
 							&#x2103;
-							<c:out value="Low: ${(day.low - 32)*(5/9)}" />
+							<fmt:formatNumber value="${(day.low - 32) * (5/9)}" maxFractionDigits="0" var="temp" />
+							<c:out value="Low: ${temp}" />
 							&#x2103;
 						</div>
 					</c:if>
@@ -157,17 +163,29 @@
 						<img src="${imageUrl}" />
 					</div>
 
-					<div>
-						<c:out value="High: ${day.high}" />
-						&#x2109;
-						<!-- Celsius = &#x2103; -->
-
-					</div>
-
-					<div>
-						<c:out value="Low: ${day.low}" />
-						&#x2109;
-					</div>
+					<c:if test="${isFahrenheit == true || isFahrenheit == null}">
+						<div>
+							<c:out value="High: ${day.high}" />
+							&#x2109;
+						</div>
+						<div>
+							<c:out value="Low: ${day.low}" />
+							&#x2109;
+						</div>
+					</c:if>
+					<!-- If false, convert to Celsius -->
+					<c:if test="${isFahrenheit == false}">
+						<div>
+							<fmt:formatNumber value="${(day.high - 32) * (5/9)}" maxFractionDigits="0" var="temp" />
+							<c:out value="High: ${temp}"/>
+							&#x2103;
+						</div>
+						<div>
+							<fmt:formatNumber value="${(day.low - 32) * (5/9)}" maxFractionDigits="0" var="temp" />
+							<c:out value="Low: ${temp}" />
+							&#x2103;
+						</div>
+					</c:if>
 				</div>
 			</c:otherwise>
 		</c:choose>
