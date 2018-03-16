@@ -48,7 +48,7 @@
 					</div>
 
 					<div>
-						<c:out value="Acreage: ${park.acreage} acres" />
+						Acreage: <fmt:formatNumber maxFractionDigits="0"> <c:out value="${park.acreage}" /> </fmt:formatNumber> acres
 					</div>
 
 					<div>
@@ -72,7 +72,7 @@
 					</div>
 
 					<div>
-						<c:out value="Visitors per Year: ${park.annualVisitorCount}" />
+						Visitors per Year: <fmt:formatNumber maxFractionDigits="0"><c:out value="${park.annualVisitorCount}" /></fmt:formatNumber> 
 					</div>
 					<div>
 						<c:out value="Entry Fee: $${park.entryFee}" />
