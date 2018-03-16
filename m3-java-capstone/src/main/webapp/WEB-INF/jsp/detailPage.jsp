@@ -153,6 +153,33 @@
 							&#x2103;
 						</div>
 					</c:if>
+					<div class="">
+						<div class="">
+							<c:if test="${day.forecast == 'snow'}">
+							Pack snowshoes!
+							</c:if>
+							<c:if test="${day.forecast == 'rain'}">
+							Pack rain-gear and wear waterproof shoes!
+							</c:if>
+							<c:if test="${day.forecast == 'sunny'}">
+							Pack sunblock!
+							</c:if>
+							<c:if test="${day.forecast == 'thunderstorms'}">
+							Seek shelter and avoid hiking on exposed ridges!
+							</c:if>
+						</div>
+						<div class="tempChoices">
+							<c:if test="${day.high > 75}">
+							Bring an extra gallon of water!
+							</c:if>
+							<c:if test="${day.low < 20}">
+							Danger! Dress appropriately for frigid temperatures
+							</c:if>
+							<c:if test="${(day.high - day.low) > 20}">
+							Wear breathable layers!
+							</c:if>
+						</div>
+					</div>
 					
 				</div>
 			</c:when>

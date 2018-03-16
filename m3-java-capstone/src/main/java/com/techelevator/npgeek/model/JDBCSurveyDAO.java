@@ -1,7 +1,7 @@
 package com.techelevator.npgeek.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,11 +41,11 @@ public class JDBCSurveyDAO implements SurveyDAO {
 	
 	@Override
 	public Map<String, Integer> getDisplayInformation() {
-		Map<String, Integer> surveyResults = new HashMap<>();
-		String sqlSelectAllSurveyResults = 	"SELECT COUNT (parkcode) AS favNum,\n" + 
-											"parkcode\n" + 
-											"FROM survey_result\n" + 
-											"GROUP BY parkcode\n" + 
+		Map<String, Integer> surveyResults = new LinkedHashMap<>();
+		String sqlSelectAllSurveyResults = 	"SELECT COUNT (parkcode) AS favNum," + 
+											"parkcode " + 
+											"FROM survey_result " + 
+											"GROUP BY parkcode " + 
 											"ORDER BY favNum DESC, parkcode ASC";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllSurveyResults);
 		while(results.next()) {
