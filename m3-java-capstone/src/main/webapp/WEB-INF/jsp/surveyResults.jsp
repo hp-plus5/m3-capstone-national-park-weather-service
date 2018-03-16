@@ -12,7 +12,7 @@
 				<c:url value="/img/parks/${surveyParkCode.key.toLowerCase()}.jpg" var="imageUrl" />
 				<img src="${imageUrl}" />
 			</a>	
-		</div> <!-- parkImage -->
+		</div>
 
 		<div class="allParkTexts">
 		<c:forEach var="currentPark" items="${parks}">
@@ -25,8 +25,8 @@
 			<div class="allParkNames">
 				 Number of Votes: <c:out value="${surveyParkCode.value}" />
 			</div>			
-		</div><!-- parkText -->
-	</div><!-- allParkInfo -->
+		</div>
+	</div>
 </c:forEach>
 
 <%@ include file="common/footer.jspf"%>

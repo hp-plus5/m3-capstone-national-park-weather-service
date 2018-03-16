@@ -112,17 +112,18 @@
 				<div class="firstDay">
 					<c:url var="detailsUrl" value="/details"/>
 					<form action="${detailsUrl}" method="POST">
-						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-secondary active"> 
-							<input type="radio" name="tempType" id="isFahrenheit" autocomplete="off" onclick="${isFarhenheit == true}" checked > 
+						<div id="tempConverter" class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label for="fahrenheit" class="btn btn-secondary active"> 
+							<input type="radio" name="isFahrenheit" id="fahrenheit" value="true" autocomplete="on" checked > 				
 								Fahrenheit
 							</label> 
-							<label class="btn btn-secondary"> 
-							<input type="radio" name="tempType" id="isCelsius" autocomplete="off" onclick="${isFarhenheit == false}" > 
+							<label for="celsius" class="btn btn-secondary"> 
+							<input type="radio" name="isFahrenheit" id="celsius" value="false"autocomplete="off" > 
 								Celsius
 							</label>
+							<input type="submit" value="Submit"/>
 						</div>
-					
+					</form>
 					<h3>Today</h3>
 					<div class="firstDayImage">
 						<c:url value="/img/weather/${day.forecast}.png" var="imageUrl" />
@@ -146,7 +147,7 @@
 							&#x2103;
 						</div>
 					</c:if>
-					</form>
+					
 				</div>
 			</c:when>
 			<c:otherwise>
