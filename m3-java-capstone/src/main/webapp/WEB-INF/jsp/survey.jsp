@@ -18,7 +18,7 @@
 
 	<form:select path="surveyParkCode" name="surveyParkCode" form="survey">
 		<c:forEach var="parkList" items="${parks}">
-			<form:option value="${parkList.code}"><c:out value="${parkList.name}" /></form:option>
+			<form:option value="${parkList.code.toUpperCase()}"><c:out value="${parkList.name}" /></form:option>
 		</c:forEach>
 	</form:select>
 
@@ -31,7 +31,7 @@
 		<!-- This is formatting our error report/printout -->
 	</div>
 
-	<select name="stateList" form="survey">
+	<select name="state" form="survey">
 			<option value="0">Select</option>
 			<option value="AL">Alabama</option>
 			<option value="AK">Alaska</option>

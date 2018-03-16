@@ -1,7 +1,9 @@
 package com.techelevator.npgeek.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -23,24 +25,56 @@ public class JDBCSurveyDAO implements SurveyDAO {
 	@Override
 	public List<Survey> getAllSurveyResults() {
 		List<Survey> allSurveys = new ArrayList<>();
-		String sqlSelectAllSurveyResults = "SELECT * FROM survey_result";
+		String sqlSelectAllSurveyResults = "SELECT * FROM survey_result ";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllSurveyResults);
 		while(results.next()) {
 			Survey survey = new Survey();
-			survey.setSurveyParkCode(results.getString("parkCode"));
-			survey.setSurveyId(results.getLong("surveyId"));
-			survey.setEmailAddress(results.getString("emailAddress"));
+			survey.setSurveyParkCode(results.getString("parkcode"));
+			survey.setSurveyId(results.getLong("surveyid"));
+			survey.setEmailAddress(results.getString("emailaddress"));
 			survey.setState(results.getString("state"));
-			survey.setActivityLevel(results.getString("activityLevel"));
+			survey.setActivityLevel(results.getString("activitylevel"));
 			allSurveys.add(survey);
 		}
 		return allSurveys;
 	}
+	
+	@Override
+	public Map<String, Integer> getDisplayInformation() {
+		Map<String, Integer> surveyResults = new HashMap<>();
+		String sqlSelectAllSurveyResults = 	"SELECT COUNT (parkcode) AS favNum,\n" + 
+											"parkcode\n" + 
+											"FROM survey_result\n" + 
+											"GROUP BY parkcode\n" + 
+											"ORDER BY favNum DESC, parkcode ASC";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllSurveyResults);
+		while(results.next()) {
+			surveyResults.put(results.getString("parkcode"), results.getInt("favNum"));
+		}
+		return surveyResults;
+	}
+	
+//	@Override
+//	public Map<String, Integer> getDisplayInformation() {
+//		Map<String, Integer> surveyResults = new HashMap<>();
+//		String sqlSelectAllSurveyResults = 	"SELECT COUNT (survey_result.parkcode) AS favNum,\n" + 
+//											"park.parkname\n" + 
+//											"FROM survey_result\n" + 
+//											"JOIN park\n" + 
+//											"ON survey_result.parkcode = park.parkcode\n" + 
+//											"GROUP BY park.parkname\n" + 
+//											"ORDER BY favNum DESC, park.parkname ASC";
+//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllSurveyResults);
+//		while(results.next()) {
+//			surveyResults.put(results.getString("park.parkname"), results.getInt("favNum"));
+//		}
+//		return surveyResults;
+//	}
 
 	@Override
 	public void save(Survey survey) {
 		Long surveyId = getNextSurveyId();
-		String sqlInsertSurvey = "INSERT INTO survey_result(id, parkCode, emailAddress, state, activityLevel) VALUES (?,?,?,?,?)";
+		String sqlInsertSurvey = "INSERT INTO survey_result(surveyid, parkcode, emailaddress, state, activitylevel) VALUES (?,?,?,?,?)";
 		jdbcTemplate.update(sqlInsertSurvey, surveyId, survey.getSurveyParkCode(), survey.getEmailAddress(), survey.getState(), survey.getActivityLevel());
 		survey.setSurveyId(surveyId);
 	}

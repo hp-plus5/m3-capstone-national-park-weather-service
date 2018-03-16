@@ -113,11 +113,12 @@
 					<c:url var="detailsUrl" value="/details"/>
 					<form action="${detailsUrl}" method="POST">
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-secondary active"> <input
-								type="radio" name="tempType" id="isFahrenheit" value="true"
-								autocomplete="off" checked> Fahrenheit
-							</label> <label class="btn btn-secondary"> <input type="radio"
-								name="tempType" id="isCelsius" value="false" autocomplete="off">
+							<label class="btn btn-secondary active"> 
+							<input type="radio" name="tempType" id="isFahrenheit" autocomplete="off" onclick="${isFarhenheit == true}" checked > 
+								Fahrenheit
+							</label> 
+							<label class="btn btn-secondary"> 
+							<input type="radio" name="tempType" id="isCelsius" autocomplete="off" onclick="${isFarhenheit == false}" > 
 								Celsius
 							</label>
 						</div>
