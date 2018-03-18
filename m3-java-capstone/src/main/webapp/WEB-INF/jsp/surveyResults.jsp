@@ -4,7 +4,9 @@
 
 <c:forEach var="surveyParkCode" items="${survey}">
 	<div class="allParkInfo">
+	
 		<div class="allParkImages">
+		
 			<c:url value="/details" var="detailPageUrl">
 				<c:param name="code" value ="${surveyParkCode.key}"/>
 			</c:url>
@@ -14,19 +16,21 @@
 			</a>	
 		</div>
 
+
 		<div class="allParkTexts">
+		
 		<c:forEach var="currentPark" items="${parks}">
 			<c:if test="${currentPark.code == surveyParkCode.key.toLowerCase()}">
-			<div class="allParkNames">
-				Park: <c:out value="${currentPark.name} " />
-			</div>
+				<div class="allParkNamesOnSurvey">
+					Park: <c:out value="${currentPark.name}" />
+				</div>
 			</c:if>
 		</c:forEach>
-			<div class="allParkNames">
+			<div class="surveyVotesTalley">
 				 Number of Votes: <c:out value="${surveyParkCode.value}" />
 			</div>			
-		</div>
-	</div>
+		</div> <!-- allParkTexts -->
+	</div> <!-- allParkInfo -->
 </c:forEach>
 
 <%@ include file="common/footer.jspf"%>
