@@ -1,45 +1,36 @@
 /*FONTS*/
 @font-face {
     font-family: 'american_purposeregular';
-    src: url('american_purpose-webfont.woff2') format('woff2'),
-         url('american_purpose-webfont.woff') format('woff');
+    src: url('webkit/fontsamerican_purpose-webfont.woff2') format('woff2'),
+         url('webkit/american_purpose-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
     font-family: 'broadbaynormal';
-    src: url('broadbay-webfont.woff2') format('woff2'),
-         url('broadbay-webfont.woff') format('woff');
+    src: url('webkit/broadbay-webfont.woff2') format('woff2'),
+         url('webkit/broadbay-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
     font-family: 'chlakh_demoregular';
-    src: url('chlakh_demo-webfont.woff2') format('woff2'),
-         url('chlakh_demo-webfont.woff') format('woff');
+    src: url('webkit/chlakh_demo-webfont.woff2') format('woff2'),
+         url('webkit/chlakh_demo-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
     font-family: 'haarlem_deco_demoregular';
-    src: url('haarlem_deco_demo-webfont.woff2') format('woff2'),
-         url('haarlem_deco_demo-webfont.woff') format('woff');
+    src: url('webkit/haarlem_deco_demo-webfont.woff2') format('woff2'),
+         url('webkit/haarlem_deco_demo-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
-body {
-	width: 100%;
-	background-color: #212121;
-	font-family: 'broadbaynormal';
-}
 
 #logo {
 	width: 50%;
